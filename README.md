@@ -1,16 +1,35 @@
-# FreightGuard Ops — Deterministic-First Document & Compliance AI
+# FreightGuard Ops — Deterministic-First Compliance & Document AI
 
-Production-oriented multi-tenant document operations platform built for compliance-heavy workflows (**Global Freight Forwarding** and **Banking/Institutional Ops**).
+A multi-tenant document intelligence and compliance automation platform built for **Global Freight Forwarding** and **Banking/Institutional Operations**. It ingests PDFs and noisy scans, extracts evidence-grounded records, enforces deterministic policy guardrails, and dispatches validated payloads to **CargoWise eAdaptor (XML)** and **Logi-sys (JSON)**—or routes exceptions to a **Human-in-the-Loop (HITL)** console.
 
-## Quickstart
-```bash
-# 1. Start FastAPI backend
-uvicorn app.main:app --reload --port 8000
+## Architecture ("Agent Proposes, Platform Validates")
 
-# 2. Start Streamlit Operator Console (in a second terminal)
-streamlit run ui/dashboard.py
+```mermaid
+flowchart TD
+    A[Document Intake] --> B[PyMuPDF / Vision OCR]
+    B --> C[Prompt-Injection Guard]
+    C --> D[Deterministic Regex Extractor]
+    D --> E{Missing Fields?}
+    E -- No --> G[Tenant SQL + Vector SOPs]
+    E -- Yes --> F[Tiered Gateway: Groq -> Gemini]
+    F --> G
+    G --> H[Server-Side Policy Engine]
+    H --> I[AUTO_EXECUTE / HITL / QUARANTINED]
 
-# 3. Run unit tests & golden dataset evaluation
-pytest -v
-python -m evals.run_evals
+cat << 'EOF' >> README.md
+
+## Architecture ("Agent Proposes, Platform Validates")
+
+```mermaid
+flowchart TD
+    A[Document Intake] --> B[PyMuPDF / Vision OCR]
+    B --> C[Prompt-Injection Guard]
+    C --> D[Deterministic Regex Extractor]
+    D --> E{Missing Fields?}
+    E -- No --> G[Tenant SQL + Vector SOPs]
+    E -- Yes --> F[Tiered Gateway: Groq -> Gemini]
+    F --> G
+    G --> H[Server-Side Policy Engine]
+    H --> I[AUTO_EXECUTE / HITL / QUARANTINED]
+
 
