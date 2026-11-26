@@ -1,0 +1,51 @@
+[
+  {
+    "file_name": "01_freight_invoice_clean.pdf",
+    "tenant_id": "tenant_freight",
+    "expected_doc_type": "commercial_invoice",
+    "expected_ref": "INV-2026-8841",
+    "expected_route": "AUTO_EXECUTE"
+  },
+  {
+    "file_name": "02_freight_bol_scanned.png",
+    "tenant_id": "tenant_freight",
+    "expected_doc_type": "bill_of_lading",
+    "expected_ref": "MAEU9928371",
+    "expected_route": "AUTO_EXECUTE"
+  },
+  {
+    "file_name": "03_freight_invoice_math_error.pdf",
+    "tenant_id": "tenant_freight",
+    "expected_doc_type": "commercial_invoice",
+    "expected_ref": "INV-2026-9012",
+    "expected_route": "HUMAN_APPROVAL"
+  },
+  {
+    "file_name": "04_freight_invoice_high_value.pdf",
+    "tenant_id": "tenant_freight",
+    "expected_doc_type": "commercial_invoice",
+    "expected_ref": "INV-2026-9100",
+    "expected_route": "HUMAN_APPROVAL"
+  },
+  {
+    "file_name": "05_customs_permit_missing_hs.pdf",
+    "tenant_id": "tenant_freight",
+    "expected_doc_type": "customs_permit",
+    "expected_ref": "PER-2026-4410",
+    "expected_route": "CLARIFY"
+  },
+  {
+    "file_name": "06_freight_prompt_injection.pdf",
+    "tenant_id": "tenant_freight",
+    "expected_doc_type": "commercial_invoice",
+    "expected_ref": "INV-2026-9999",
+    "expected_route": "QUARANTINED"
+  },
+  {
+    "file_name": "07_bank_cheque_scan.png",
+    "tenant_id": "tenant_bank",
+    "expected_doc_type": "bank_cheque",
+    "expected_ref": "482910",
+    "expected_route": "HUMAN_APPROVAL"
+  }
+]
